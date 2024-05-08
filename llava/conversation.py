@@ -1,3 +1,4 @@
+# Modified from LLaVA: https://github.com/haotian-liu/LLaVA.git
 import dataclasses
 from enum import auto, Enum
 from typing import List, Tuple
@@ -369,6 +370,16 @@ Answer the questions.""",
     sep="<|im_end|>",
 )
 
+conv_phi3_instruct = Conversation(
+    system="""<|system|>\nYou are a helpful AI assistant.""",
+    roles=("\n<|user|>\n", "\n<|assistant|>\n"),
+    version="phi3",
+    messages=(),
+    offset=0,
+    sep_style=SeparatorStyle.MPT,
+    sep="<|end|>",
+)
+
 default_conversation = conv_vicuna_v1
 conv_templates = {
     "default": conv_vicuna_v0,
@@ -387,6 +398,7 @@ conv_templates = {
     "llava_v1": conv_llava_v1,
     "v1_mmtag": conv_llava_v1_mmtag,
     "llava_llama_2": conv_llava_llama_2,
+    "phi3_instruct": conv_phi3_instruct,
 
     "mpt": conv_mpt,
 }
